@@ -6,7 +6,7 @@ public class Triangle {
         String answer = String.format("Периметр треугольника со сторонами %f, %f, %f = %f", length1, length2, length3, perimetrArea(length1, length2, length3));
         System.out.println(answer);
     }
-private static double perimetrArea(double a, double b, double c){
+public static double perimetrArea(double a, double b, double c){
         return a+b+c;
 }
 }
