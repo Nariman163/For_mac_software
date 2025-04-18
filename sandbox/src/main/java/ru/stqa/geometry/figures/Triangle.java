@@ -1,23 +1,41 @@
 package ru.stqa.geometry.figures;
 import java.lang.Math;
+
 //формула герона  p(p-a)(p-b)(p-c) в степени 1/2, p - полупериметр
-
 public class Triangle {
+    public static void main(String[] args) {
 
-    double T1;
-    double T2;
-    double T3;
+        Triangle triangle = new Triangle(1, 5, 6);
 
-    public Triangle(double T1, double T2, double T3) {
-        this.T1 = T1;
-        this.T2 = T2;
-        this.T3 = T3;
+        System.out.println("Периметр треугольника: " + triangle.calculatePerim());
+        System.out.println("Площадь треугольника: " + triangle.calculateArea());
+    }
+        double sideA;
+        double sideB;
+        double sideC;
+
+    public Triangle(double sideA, double sideB, double sideC) {
+        this.sideA = sideA;
+        this.sideB = sideB;
+        this.sideC = sideC;
+        if (sideA*sideB*sideC<0){
+            throw new IllegalArgumentException("Треугольник с отрицательной стороной");
+        }
+        if  ((sideA >= sideB + sideC) || (sideB >= sideA + sideC) || (sideC >= sideA + sideB)){
+            throw new IllegalArgumentException("Треугольник с некорректной стороной");
+        }
+
     }
 
-    public double areaTriangle() {
-        double p = (T1 + T2 + T3) / 2.0;
-        return Math.sqrt(p * (p - T1) * (p - T2) * (p - T3));
+
+    public double calculatePerim() {
+        return sideA + sideB + sideC;
     }
 
+    public double calculateArea() {
+       double semiPerimeter = calculatePerim() / 2;
+       return Math.sqrt(semiPerimeter * (semiPerimeter - sideA) * (semiPerimeter - sideB) * (semiPerimeter - sideC));
+
+    }
 }
 
