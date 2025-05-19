@@ -16,4 +16,12 @@ public class SquareTests {
         Assertions.assertEquals(20.0, new Square(5.0).perimeter());
 
     }
+
+    @Test
+    void canEquals(){
+        var s1 = new Square(5.0);
+        var s2 = new Square(5.0);
+        Assertions.assertEquals(s1, s2);
+    }
+
 }
